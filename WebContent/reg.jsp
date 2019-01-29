@@ -7,24 +7,24 @@
 <title>register</title>
 </head>
 <body>
-<form action="regserve" method="post">
+<form action="<%=request.getContextPath() %>/regserve" method="post">
             <center><b>REGISTERATION</b><br><br>
             <table  width="30%" cellpadding="5">
             <tr>
                         <td>Account No</td>
-                        <td><input type="text" name="account_no" value="" /></td>
+                        <td><input type="text" name="account_no" /></td>
                     </tr>
                     <tr>
                         <td>Name</td>
-                        <td><input type="text" name="name" value="" /></td>
+                        <td><input type="text" name="name" /></td>
                     </tr>
                     <tr>
                         <td>Email</td>
-                        <td><input type="text" name="email" value="" /></td>
+                        <td><input type="text" name="email"/></td>
                     </tr>
                     <tr>
                         <td>Password</td>
-                        <td><input type="password" name="password" value="" /></td>
+                        <td><input type="password" name="password" /></td>
                     </tr>
  
                     <tr>

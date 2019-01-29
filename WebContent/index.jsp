@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>login</title>
 </head>
 <body>
 <center>LOGIN</center><br><br>
-<form action="/logserve" method="post">
+<form action="<%= request.getContextPath() %>/logserve" method="post">  <%--getcontext is to get applicton and append to URI --%>
             <center>
             <table  width="30%" cellpadding="7">
                     <tr>
@@ -17,7 +17,7 @@
                     </tr>
                     <tr>
                         <td>Password</td>
-                        <td><input type="password" name="pass" /></td>
+                        <td><input type="password" name="password" /></td>
                     </tr>
                     <tr>
                     <td><input type="submit" value="Login"></td>

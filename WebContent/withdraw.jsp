@@ -7,10 +7,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form>
-Account No: <input type="text" name="acc_no">
-Withdraw Amount:<input type="text" name="withdraw">
-<input type="submit" value="withdraw">
+<% HttpSession nsession = request.getSession(false);
+if(session==null)
+{
+	response.sendRedirect("index.jsp");
+}
+%>
+<form action=<%=request.getContextPath() %>/WithServe method="post">
+<center>
+<table width="30%" cellpadding="3">
+<tr>
+  <td>Account No</td><td> <input type="text" name="acc_no"></td>
+</tr>
+<tr>
+   <td>Withdraw Amount</td><td><input type="text" name="withdraw"></td>
+   </tr>
+   <tr>
+<td><input type="submit" value="withdraw"></td>
+</tr>
+</table>
+</center>
 </form>
 </body>
 </html>

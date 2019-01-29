@@ -7,7 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="transserve" method="post">
+<% HttpSession nsession = request.getSession(false);
+if(session==null)
+{
+	response.sendRedirect("index.jsp");
+}
+%>
+<form action="<%=request.getContextPath()%>/transserve" method="post">
  <center> Transfer Transaction</centre>
             <table  width="30%" cellpadding="7">
                     <tr>

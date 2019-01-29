@@ -13,10 +13,8 @@ if(session==null)
 	response.sendRedirect("index.jsp");
 }
 %>
-<form action="<%=request.getContextPath()%>/DepServe"  method="post">
-Account No: <input type="text" name="acc_no">
-Deposit Amount:<input type="text" name="deposit">
-<input type="submit" value="deposit">
+<form action="<%=request.getContextPath()%>/ViewServe" method="post">
+<input type="submit" value="view">
 </form>
 </body>
 </html>

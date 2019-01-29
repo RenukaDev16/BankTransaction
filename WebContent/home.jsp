@@ -7,6 +7,12 @@
 <title>home page</title>
 </head>
 <body>
+<% HttpSession nsession = request.getSession(false);
+if(session==null)
+{
+	response.sendRedirect("index.jsp");
+}
+%>
 <center><b>WELCOME!!</b></center>       
 <a href="withdraw.jsp">Withdraw</a>
 <a href="deposit.jsp">Deposit</a>

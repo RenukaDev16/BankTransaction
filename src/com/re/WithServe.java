@@ -1,28 +1,26 @@
 package com.re;
-
+import java.sql.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class transserve
+ * Servlet implementation class WithServe
  */
-@WebServlet("/transserve")
-public class TransServe extends HttpServlet {
+@WebServlet("/WithServe")
+public class WithServe extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TransServe() {
+    public WithServe() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,33 +37,28 @@ public class TransServe extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		response.setContentType("text/html; charset=ISO-8859-1");
 		PrintWriter pw=response.getWriter();
-		String a=request.getParameter("faccno");
-        String b=request.getParameter("laccno");
-		String c=request.getParameter("amt");
-		int f=Integer.parseInt(c);
-		 try
-			{
-				Class.forName("com.mysql.jdbc.Driver");
-				Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/java","root","root");
-				Statement st=con.createStatement();
-				String s="update finals   set amount=amount-f where acc_no =a";
-				String s1="update finals   set amount=amount+f where acc_no =b";
-				int x=st.executeUpdate(s);
-				int y=st.executeUpdate(s1);
-				if(x==1&& y==1)
-				{
-					response.sendRedirect("success.jsp");
-				}
-				
-	            
+	 String a=request.getParameter("acc_no");
+	 String b="w";
+	 String c=request.getParameter("withdraw");
+	 try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/java","root","root");
+			Statement st=con.createStatement();
+			String s="insert into transactions(acc_no,type,amount)values('"+a+"','"+b+"','"+c+"')";
+			int x=st.executeUpdate(s);
+			if(x==1){
+				response.sendRedirect("success.jsp");
 			}
-			catch(Exception e)
-			{
-				System.out.println(e);
-			}
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		
 		doGet(request, response);
 	}
 
