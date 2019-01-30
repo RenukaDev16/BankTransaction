@@ -45,14 +45,16 @@ public class TransServe extends HttpServlet {
 		String a=request.getParameter("faccno");
         String b=request.getParameter("laccno");
 		String c=request.getParameter("amt");
+		int d=Integer.parseInt(a);
+		int e=Integer.parseInt(b);
 		int f=Integer.parseInt(c);
 		 try
 			{
 				Class.forName("com.mysql.jdbc.Driver");
 				Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/java","root","root");
 				Statement st=con.createStatement();
-				String s="update finals   set amount=amount-f where acc_no =a";
-				String s1="update finals   set amount=amount+f where acc_no =b";
+				String s="update finals   set amount=amount-f where acc_no =d";
+				String s1="update finals   set amount=amount+f where acc_no =e";
 				int x=st.executeUpdate(s);
 				int y=st.executeUpdate(s1);
 				if(x==1&& y==1)
@@ -62,9 +64,9 @@ public class TransServe extends HttpServlet {
 				
 	            
 			}
-			catch(Exception e)
+			catch(Exception ex)
 			{
-				System.out.println(e);
+				System.out.println(ex);
 			}
 		doGet(request, response);
 	}

@@ -1,6 +1,7 @@
 package com.re;
 
 import java.io.IOException;
+import java.sql.*;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -41,11 +42,19 @@ public class ViewServe extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=ISO-8859-1");
 		PrintWriter pw=response.getWriter();
+		String a=request.getParameter("acc_no");
+		int ac=Integer.parseInt(a);
 		 try
 			{
 				Class.forName("com.mysql.jdbc.Driver");
 				Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/java","root","root");
 				Statement st=con.createStatement();
+				String s="select  amount from finals where acc_no='"+ac+"'";
+				ResultSet rs=st.executeQuery(s);
+				while(rs.next())
+				{
+					System.out.println(rs.getString(1));
+				}
 			}
 		 catch(Exception e)
 		 {
